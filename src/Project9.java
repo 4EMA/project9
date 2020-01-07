@@ -25,12 +25,19 @@ public class Project9 {
         driver.findElement(By.cssSelector(".group-items > :nth-child(6) > .children > :nth-child(1)")).click();
         driver.findElement(By.cssSelector(".group-items > :nth-child(6) > .children > :nth-child(1) .children > :nth-child(1)")).click();
         driver.findElement(By.cssSelector("[data-icon='plus']")).click();
-        driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("Ema4");
+        String descriptionName = "Ema4";
+        WebElement description = driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]"));
+        description.sendKeys(descriptionName);
         driver.findElement(By.cssSelector("#mat-select-2")).click();
         driver.findElement(By.xpath("//*[@id=\"mat-option-11\"]/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"mat-input-7\"]")).sendKeys("01/06/2020");
-        driver.findElement(By.xpath("//*[@id=\"mat-input-8\"]")).sendKeys("01/15/2020");
-        driver.findElement(By.xpath("//*[@id=\"mat-input-6\"]")).sendKeys("Pass The Test");
+        String startdateName = "01/06/2020";
+       driver.findElement(By.xpath("//*[@id=\"mat-input-7\"]")).sendKeys(startdateName);
+
+        String enddateName = "01/15/2020";
+        driver.findElement(By.xpath("//*[@id=\"mat-input-8\"]")).sendKeys(enddateName);
+        String comment = "Pass The Test";
+
+        driver.findElement(By.xpath("//*[@id=\"mat-input-6\"]")).sendKeys(comment);
         driver.findElement(By.xpath("//div[@class='mat-tab-label mat-ripple ng-star-inserted']")).click();
         driver.findElement(By.xpath("//input[@class='mat-input-element mat-form-field-autofill-control cdk-text-" +
                 "field-autofill-monitored ng-untouched ng-pristine ng-invalid']")).sendKeys("1");
@@ -43,10 +50,38 @@ public class Project9 {
                 System.out.println("Creation success!");
             } catch( Exception e) {
                 System.out.println("Creation failure!");
+            }
+            String text = driver.findElement(By.xpath("//td[text()='Ema4']")).getText();
+             System.out.println(text);
+             if (descriptionName.equals(text)){
+                 System.out.println("Success");
+             }
+        System.out.println(text);
+             String text2 = driver.findElement(By.xpath("//td[text()='01/06/2020']")).getText();
+       // System.out.println(text2);
+        if (startdateName.equals(text2)){
+            System.out.println("Success");
+        }else{
+            System.out.println("fail");
+        }
+        String text1 = driver.findElement(By.xpath("//td[text()='01/15/2020']")).getText();
+
+        if (enddateName.equals(text1)){
+            System.out.println("Success");
+        }else{
+            System.out.println("fail");
+        }
+        System.out.println(text1);
+        String text3 = driver.findElement(By.xpath("//td[text()='Pass The Test']")).getText();
+
+
         }
 
-    }
-}
+        }
+
+
+
+
 
 
 
